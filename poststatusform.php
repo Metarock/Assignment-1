@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c6df42253a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <title></title>
   </head>
   <body>
-    <nav class="nav">
+    <nav class="navbar navbar-light">
       <a class="nav-link"href="./index.html">Home</a>
       <a class="nav-link"href="./about.html">About</a>
       <a class="nav-link"href="./poststatusform.php">Post a Status</a>

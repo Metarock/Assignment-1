@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c6df42253a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
     <title></title>
   </head>
   <body>
-    <nav class="nav">
+    <nav class="navbar navbar-light">
       <a class="nav-link"href="./index.html">Home</a>
       <a class="nav-link"href="./about.html">About</a>
       <a class="nav-link"href="./poststatusform.php">Post a Status</a>
       <a class="nav-link"href="./searchstatusform.html">Search Status</a>
     </nav>
 
-    <h1>Status Processing </h1>
+    <h1 class = "text-center text-uppercase">Status Processing </h1>
     <?php
     require_once('conf/sqlinfo.inc.php');
 
@@ -89,22 +90,26 @@
       if(empty($share) || empty($date)){
         // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
         // echo "<p> Please click go back on home page or post status page to input again</p>";
-        echo "<div class = `container py-5`>
-        <h4 class = `text-center text-uppercase`>Invalid Input</h4>
-        <h6>Share or Date is not occupied</h6>
-        <div class = `alert alert-danger` role=`alert`>
-        <strong>Invalid</strong>
-        The inputs are empty and needs to be occupied. Please ensure they are filled.
-        </div>
-        </div>";
-        die("<p>ERROR</p>" );
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+        echo "<h6>Share or Date is not occupied</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Invalid</strong>";
+        echo "he inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo "</div></div>";
+        die();
       }
       else if(!preg_match('/^S\d{4}$/', $statusCode)){
         //do something here\
-        die("<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+        echo "<h6>Status Code Invalid</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Invalid</strong>";
+        echo "The status code is not according to format, please follow the example (S1234)";
+        echo "</div></div>";
+        die();
 
-        // echo "<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p>";
-        // echo "<p> Please click go back on home page or post status page to input again</p>";
       }
       else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
 
