@@ -87,7 +87,30 @@
       }
 
 
-      if(empty($share) || empty($date)){
+      if(!preg_match('/^S\d{4}$/', $statusCode)){
+        //do something here\
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+        echo "<h6>Status Code Invalid</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Invalid</strong>";
+        echo " The status code is not according to format, please follow the example (S1234)";
+        echo "</div></div>";
+        die();
+
+      }
+      else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
+
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+        echo "<h6>Status Text is invalid</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Invalid</strong>";
+        echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo "</div></div>";
+        die();
+      }
+      else if(empty($share) || empty($date)){
         // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
         // echo "<p> Please click go back on home page or post status page to input again</p>";
         echo "<div class = 'container py-5'>";
@@ -95,27 +118,9 @@
         echo "<h6>Share or Date is not occupied</h6>";
         echo "<div class = 'alert alert-danger' role='alert'>";
         echo "<strong>Invalid</strong>";
-        echo "he inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
         echo "</div></div>";
         die();
-      }
-      else if(!preg_match('/^S\d{4}$/', $statusCode)){
-        //do something here\
-        echo "<div class = 'container py-5'>";
-        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
-        echo "<h6>Status Code Invalid</h6>";
-        echo "<div class = 'alert alert-danger' role='alert'>";
-        echo "<strong>Invalid</strong>";
-        echo "The status code is not according to format, please follow the example (S1234)";
-        echo "</div></div>";
-        die();
-
-      }
-      else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
-
-        die("<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
-        // echo "<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p>";
-        // echo "<p> Please click go back on home page or post status page to input again</p>";
       }
 
       $codeQuery = codeExists($conn, $table);
