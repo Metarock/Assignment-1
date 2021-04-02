@@ -21,28 +21,6 @@
     // 1. Status (done), Status text (done), share (done)
     $conn = mysqli_connect($host, $user, $password, $db);
 
-    if(!$conn){
-      echo "<p>Connection failed</p>";
-
-    }else{
-      echo "<p>Connection successful</p>";
-    }
-
-    //get data from the form and check it is printing out
-    $statusCode = $_POST['statuscode'];
-    $statusText = $_POST['statustext'];
-    $share= $_POST['share'];
-    $date = $_POST['date'];
-    $permission = $_POST['permission'];
-
-    // echo "<p> ", $statusCode, " ", $statusAge , " ", $share, " ", $date , " ", $permission , "</p>";
-    //
-    // //permissions is an array based on the html form
-    // foreach ($permission as $key => $value) {
-    //   // code...
-    //   echo "<p>", $value, "</p>";
-    // };
-
     //Create the table of into the server IF IT DOES NOT EXIST YET
     function table($conn){
       $createTable = "CREATE TABLE IF NOT EXISTS $table(
@@ -59,74 +37,120 @@
       return mysqli_query($conn, $createTable);
     }
 
-    //validate the input and upon error provide links to return to the Home page and Post Status
-    $result = table($conn);
-
-    if(empty($share) || empty($date)){
-      die("<div class = `container py-5`>
-            <h4 class = `text-center text-uppercase`>Invalid Input</h4>
-            <h6>Share or Date is not occupied</h6>
-            <div class = `alert alert-danger` role=`alert`>
-              <strong>Invalid</strong>
-              The inputs are empty and needs to be occupied. Please ensure they are filled.
-            </div>
-           </div>" );
-      // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
-      // echo "<p> Please click go back on home page or post status page to input again</p>";
-
-    }
-    else if(!preg_match('/^S\d{4}$/', $statusCode)){
-      //do something here\
-      die("<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
-
-      // echo "<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p>";
-      // echo "<p> Please click go back on home page or post status page to input again</p>";
-    }
-    else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
-
-      die("<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
-      // echo "<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p>";
-      // echo "<p> Please click go back on home page or post status page to input again</p>";
+    function insertTable($conn, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
+      $insert = "INSERT INTO $table"
+                . "(code, status, share, date, likeBoolean, commentBoolean, shareBoolean)"
+                . "VALUES"
+                ."('$statusCode', '$statusText', '$share', '$date', '$likeable', '$commentable', '$shareable')";
+      return mysqli_query($conn, $insert);
     }
 
-    //format the date for SQL database
-    $date = date('d/m/Y', strtotime($date));
+    if(!$conn){
+      echo "<p>Connection failed</p>";
 
-    echo "<p>", $date ,"</p>";
-
-    //check if date is valid
-    $testDate = explode('/', $date);
-    $validDate = checkdate($testDate[0], $testDate[1], $testDate[2]);
-
-    if(!validDate){
-      die("<p>Invalid date, please input again</p>");
-    }
-
-    //permission, setting it to false first;
-    $likeable = 0;
-    $commentable = 0;
-    $shareable = 0;
-    if(empty($permission)){
-      die("<p>Permissions are not set, please return and enter your input.</p>");
     }else{
-      foreach($permission as $value){
-        if($value === "like"){
-          echo "<p>It is like</p>";
-          $likeable = 1;
-        }
-        if($value === "comment"){
-          echo "<p>It is comment</p>";
-          $commentable = 1;
-        }
-        if($value === "share"){
-          echo "<p>It is share</p>";
-          $shareable = 1;
+      echo "<p>Connection successful</p>";
+      //get data from the form and check it is printing out
+      $statusCode = $_POST['statuscode'];
+      $statusText = $_POST['statustext'];
+      $share= $_POST['share'];
+      $date = $_POST['date'];
+      $permission = $_POST['permission'];
+
+      // echo "<p> ", $statusCode, " ", $statusAge , " ", $share, " ", $date , " ", $permission , "</p>";
+      //
+      // //permissions is an array based on the html form
+      // foreach ($permission as $key => $value) {
+      //   // code...
+      //   echo "<p>", $value, "</p>";
+      // };
+
+      //validate the input and upon error provide links to return to the Home page and Post Status
+      $result = table($conn);
+
+      if(empty($share) || empty($date)){
+        die("<div class = `container py-5`>
+        <h4 class = `text-center text-uppercase`>Invalid Input</h4>
+        <h6>Share or Date is not occupied</h6>
+        <div class = `alert alert-danger` role=`alert`>
+        <strong>Invalid</strong>
+        The inputs are empty and needs to be occupied. Please ensure they are filled.
+        </div>
+        </div>" );
+        // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
+        // echo "<p> Please click go back on home page or post status page to input again</p>";
+
+      }
+      else if(!preg_match('/^S\d{4}$/', $statusCode)){
+        //do something here\
+        die("<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
+
+        // echo "<p>The input is not a valid pattern, the pattern has to S#### followed, # replace with numbers. </p>";
+        // echo "<p> Please click go back on home page or post status page to input again</p>";
+      }
+      else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
+
+        die("<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p><br />" . "<p> Please click go back on home page or post status page to input again</p>" );
+        // echo "<p>The input is not a valid pattern, the pattern has to be alphanumeric characters, other characters or symbols are not allowed.  </p>";
+        // echo "<p> Please click go back on home page or post status page to input again</p>";
+      }
+
+      //format the date for SQL database
+      $date = date('d/m/Y', strtotime($date));
+
+      echo "<p>", $date ,"</p>";
+
+      //check if date is valid
+      $testDate = explode('/', $date);
+      $validDate = checkdate($testDate[0], $testDate[1], $testDate[2]);
+
+      if(!validDate){
+        die("<p>Invalid date, please input again</p>");
+      }
+
+      //permission, setting it to false first;
+      $likeable = 0;
+      $commentable = 0;
+      $shareable = 0;
+      if(empty($permission)){
+        die("<p>Permissions are not set, please return and enter your input.</p>");
+      }else{
+        foreach($permission as $value){
+          if($value === "like"){
+            echo "<p>It is like</p>";
+            $likeable = 1;
+          }
+          if($value === "comment"){
+            echo "<p>It is comment</p>";
+            $commentable = 1;
+          }
+          if($value === "share"){
+            echo "<p>It is share</p>";
+            $shareable = 1;
+          }
         }
       }
-    }
 
+      //format date for sql
+      $date = date('Y-m-d', strtotime(str_replace('/', '-', $date)));
 
-    //insert table
+      //insert table
+      // $result = insertTable($conn, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
+      $insert = "INSERT INTO $table"
+                . "(code, status, share, date, likeBoolean, commentBoolean, shareBoolean)"
+                . "VALUES"
+                ."('$statusCode', '$statusText', '$share', '$date', '$likeable', '$commentable', '$shareable')";
+
+      echo $insert;
+
+      $result = mysqli_query($conn, $insert);
+
+      if($result){
+        echo "<p>Successfully posted and stored into $table database</p>";
+      }
+
+    } //if connection is successful
+
 
 
 
