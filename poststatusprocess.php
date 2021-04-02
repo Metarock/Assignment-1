@@ -37,12 +37,18 @@
       return mysqli_query($conn, $createTable);
     }
 
-    function insertTable($conn, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
+    function insertTable($conn, $table,$statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
       $insert = "INSERT INTO $table"
                 . "(code, status, share, date, likeBoolean, commentBoolean, shareBoolean)"
                 . "VALUES"
                 ."('$statusCode', '$statusText', '$share', '$date', '$likeable', '$commentable', '$shareable')";
-      return mysqli_query($conn, $insert);
+      return $insert;
+    }
+
+    function codeExists($conn, $table){
+      $code = "SELECT code FROM $table";
+
+      return $code;
     }
 
     if(!$conn){
@@ -95,10 +101,21 @@
         // echo "<p> Please click go back on home page or post status page to input again</p>";
       }
 
-      //format the date for SQL database
-      $date = date('d/m/Y', strtotime($date));
+      $codeQuery = codeExists($conn, $table);
 
-      echo "<p>", $date ,"</p>";
+
+      $result = mysqli_query($conn, $codeQuery);
+
+      //if there are no data in the table, code can ignore this.
+      if(mysqli_num_rows($result) != 0){
+        while($row = mysqli_fetch_assoc($result)){
+          if($row['code'] == $statusCode){
+            die("<p>The status code already exists!! Please input another code.</p>");
+          }
+        }
+      }
+
+      $date = date('d/m/Y', strtotime($date));
 
       //check if date is valid
       $testDate = explode('/', $date);
@@ -117,35 +134,32 @@
       }else{
         foreach($permission as $value){
           if($value === "like"){
-            echo "<p>It is like</p>";
             $likeable = 1;
           }
           if($value === "comment"){
-            echo "<p>It is comment</p>";
             $commentable = 1;
           }
           if($value === "share"){
-            echo "<p>It is share</p>";
             $shareable = 1;
           }
         }
       }
 
+
       //format date for sql
       $date = date('Y-m-d', strtotime(str_replace('/', '-', $date)));
 
       //insert table
-      // $result = insertTable($conn, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
-      $insert = "INSERT INTO $table"
-                . "(code, status, share, date, likeBoolean, commentBoolean, shareBoolean)"
-                . "VALUES"
-                ."('$statusCode', '$statusText', '$share', '$date', '$likeable', '$commentable', '$shareable')";
+      $insert = insertTable($conn, $table, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
 
       echo $insert;
 
       $result = mysqli_query($conn, $insert);
 
-      if($result){
+      if(!$result){
+        echo "<p>Oops something went wrong</p>";
+        //If status code exists
+      } else{
         echo "<p>Successfully posted and stored into $table database</p>";
       }
 
