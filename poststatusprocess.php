@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
     <title></title>
   </head>
   <body>
@@ -21,20 +22,20 @@
     // 1. Status (done), Status text (done), share (done)
     $conn = mysqli_connect($host, $user, $password, $db);
 
+
     //Create the table of into the server IF IT DOES NOT EXIST YET
-    function table($conn){
+    function createTable($conn, $table){
       $createTable = "CREATE TABLE IF NOT EXISTS $table(
         code VARCHAR(5) PRIMARY KEY,
         status VARCHAR(500) NOT NULL,
         share VARCHAR(50) NOT NULL,
-        date date NOT NULL,
+        date DATE NOT NULL,
         likeBoolean tinyint(1) NOT NULL,
         commentBoolean tinyint(1) NOT NULL,
         shareBoolean tinyint(1) NOT NULL
 
       ) ";
 
-      return mysqli_query($conn, $createTable);
     }
 
     function insertTable($conn, $table,$statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
@@ -51,8 +52,15 @@
       return $code;
     }
 
+    function tableExists($conn, $table){
+      $checkTable = "SELECT * FROM $table";
+
+      return $checkTable;
+    }
+
     if(!$conn){
       echo "<p>Connection failed</p>";
+      die();
 
     }else{
       echo "<p>Connection successful</p>";
@@ -63,29 +71,33 @@
       $date = $_POST['date'];
       $permission = $_POST['permission'];
 
-      // echo "<p> ", $statusCode, " ", $statusAge , " ", $share, " ", $date , " ", $permission , "</p>";
-      //
-      // //permissions is an array based on the html form
-      // foreach ($permission as $key => $value) {
-      //   // code...
-      //   echo "<p>", $value, "</p>";
-      // };
-
       //validate the input and upon error provide links to return to the Home page and Post Status
-      $result = table($conn);
+      $tableExist = tableExists($conn, $table);
+
+      $exists = mysqli_query($conn, $tableExist);
+
+      if($exists){
+        echo "<p>Table exists</p>";
+      }
+      else{
+        echo "<p>Table does not exists. Creating one</p>";
+
+        createTable($conn, $table);
+      }
+
 
       if(empty($share) || empty($date)){
-        die("<div class = `container py-5`>
+        // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
+        // echo "<p> Please click go back on home page or post status page to input again</p>";
+        echo "<div class = `container py-5`>
         <h4 class = `text-center text-uppercase`>Invalid Input</h4>
         <h6>Share or Date is not occupied</h6>
         <div class = `alert alert-danger` role=`alert`>
         <strong>Invalid</strong>
         The inputs are empty and needs to be occupied. Please ensure they are filled.
         </div>
-        </div>" );
-        // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
-        // echo "<p> Please click go back on home page or post status page to input again</p>";
-
+        </div>";
+        die("<p>ERROR</p>" );
       }
       else if(!preg_match('/^S\d{4}$/', $statusCode)){
         //do something here\

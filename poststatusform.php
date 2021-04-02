@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
     <title></title>
   </head>
   <body>
@@ -33,8 +34,8 @@
       <label><input type ="checkbox" name="permission[]" value="comment"/>Allow comment</label>
       <label><input type ="checkbox" name="permission[]" value="share"/>Allow share</label> <br>
 
-      <input type="submit" name="" value="Submit">
-      <input type="reset" name="" value="Reset"> <br>
+      <input class ="btn btn-primary active" type="submit" name="" value="Submit">
+      <input class ="btn btn-warning active" type="reset" name="" value="Reset"> <br>
 
       <a class=""href="./index.html">Return to Home Page</a>
     </form>
