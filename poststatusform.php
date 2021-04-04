@@ -44,7 +44,7 @@
 </html>
 
 
-<!-- <div class="row">
+ <!-- <div class="row">
   <div class="mx-auto col-sm-6">
     <div class="card">
       <div class="card-header">
@@ -64,12 +64,40 @@
                   <input class = "form-control" type="text" name="statustext" value="" required/>
               </div>
           </div>
+          <div class="form-group row">
+            <label class ="col-lg-3 col-form-label form-control-label">Share</label>
+            <div class="col-lg-9">
+              <input class = "form-control" type="radio" name="share" value="public">
+              <label for="public">Public</label>
+              <input class = "form-control" type="radio" name="share" value="friends">
+              <label for="friends">Friends</label>
+              <input class = "form-control" type="radio" name="share" value="self">
+              <label for="self">Only Me</label>
+            </div>
+          </div>
+          <div class="form-group rpw">
+            <label class = "col-lg-3 col-form-label form-control-label">Date: </label>
+            <div class="col-lg-9">
+              <input class = "form-control" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />
+            </div>
+          </div>
+          <div class="form-group rpw">
+            <label class = "col-lg-3 col-form-label form-control-label">Permission Type: </label>
+            <div class="col-lg-9">
+              <label><input class = "form-control" type ="checkbox" name="permission[]" value="like"/>Allow like</label>
+              <label><input class = "form-control" type ="checkbox" name="permission[]" value="comment"/>Allow comment</label>
+              <label><input class = "form-control" type ="checkbox" name="permission[]" value="share"/>Allow share</label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label"></label>
+            <div class="col-lg-9">
+              <input class ="btn btn-primary" type="submit" name="" value="Submit">
+              <input class ="btn btn-secondary" type="reset" name="" value="Reset">
+            </div>
+          </div>
         </form>
-
       </div>
-
     </div>
-
   </div>
-
 </div> -->
