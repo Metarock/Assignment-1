@@ -1,0 +1,37 @@
+body{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+h1{
+  color: black;
+  display:inline-block;
+  width:360px;
+  font-size: 2rem;
+}
+
+p {
+  display: inline-block;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #eef2f3;
+}
+
+.container-fluid {
+  padding: 3% 15% 7%;
+}
+
+.colored-section{
+  background-color: #ff4c68;
+  color: #fff;
+}
+
+p {
+  display: inline-block;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #264653;
+}

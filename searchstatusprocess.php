@@ -4,15 +4,21 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c6df42253a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
     <title></title>
   </head>
   <body>
-    <nav class="navbar navbar-light">
-      <a class="nav-link"href="./index.html">Home</a>
-      <a class="nav-link"href="./about.html">About</a>
-      <a class="nav-link"href="./poststatusform.php">Post a Status</a>
-      <a class="nav-link"href="./searchstatusform.html">Search Status</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="container-fluid">
+          <div class="navbar-nav">
+            <a class="nav-link" href="./index.html">Home</a>
+            <a class="nav-link" href="./about.html">About</a>
+            <a class="nav-link" href="./poststatusform.php">Post a Status</a>
+            <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+          </div>
+        </div>
+      </div>
     </nav>
     <?php
       require_once('conf/sqlinfo.inc.php');
@@ -47,7 +53,7 @@
             echo'<div class="container">';
             echo'<h2>Status Code: ', $row["code"], '</h2>';
             echo '<div class="content">';
-            echo'<p>Status ', $row["status"], '</p>';
+            echo'<p>Status: ', $row["status"], '</p>';
             echo'<p>Share: ', $row["share"], '</p>';
             echo'<p>Date: ', date('F jS \, Y', strtotime( $row["date"])), '</p>';
             echo'<p>Like: ', $row["likeBoolean"] ? "Allowed" : "Not Allowed", '</p>';

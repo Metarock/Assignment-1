@@ -4,15 +4,21 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c6df42253a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
     <title></title>
   </head>
   <body>
-    <nav class="navbar navbar-light">
-      <a class="nav-link"href="./index.html">Home</a>
-      <a class="nav-link"href="./about.html">About</a>
-      <a class="nav-link"href="./poststatusform.php">Post a Status</a>
-      <a class="nav-link"href="./searchstatusform.html">Search Status</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="container-fluid">
+          <div class="navbar-nav">
+            <a class="nav-link" href="./index.html">Home</a>
+            <a class="nav-link" href="./about.html">About</a>
+            <a class="nav-link" href="./poststatusform.php">Post a Status</a>
+            <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+          </div>
+        </div>
+      </div>
     </nav>
     <h1 class="heading">Status Posting System</h1>
 
