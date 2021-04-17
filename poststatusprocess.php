@@ -81,7 +81,7 @@
       die();
 
     }else{
-      echo "<p>Connection successful</p>";
+      // echo "<p>Connection successful</p>";
       //get data from the form and check it is printing out
       $statusCode = $_POST['statuscode'];
       $statusText = $_POST['statustext'];
@@ -95,7 +95,14 @@
       $exists = mysqli_query($conn, $tableExist);
 
       if($exists){
-        echo "<p>Table exists</p>";
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+        echo "<h6>Creating Table Invalid!!!!</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Table Invite</strong>";
+        echo " The status code is not according to format, please follow the example (S1234)";
+        echo "</div></div>";
+        die();
       }
       else{
         echo "<p>Table does not exists. Creating one</p>";

@@ -34,8 +34,17 @@
     <h1>Status Posting System</h1>
 
     <form class="" action="./searchstatusprocess.php" method="get">
-      <label for="">Status (required)</label><input type="text" name="statustext" value="" required/>
-      <input type="submit" name="" value="View Status">
+      <div class="form form-row d-flex justify-content-center text-center">
+        <div class="form-group">
+          <label for="">Status (required)</label>
+          <input class="form-input"type="text" name="statustext" value="" required/>
+        </div>
+      </div>
+      <div class="form-row d-flex justify-content-center text-center">
+        <div class="form-group col-md-2">
+          <input class="form-button"type="submit" name="" value="View Status">
+        </div>
+      </div>
     </form>
 
   </body>

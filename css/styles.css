@@ -57,6 +57,12 @@ p {
   color: white;
 }
 
+.navbar-nav.ml-auto.nav-item.nav-link{
+  font-size: 1.2rem;
+  color: white;
+}
+  
+
 #agreement{
   padding: 7% 15%;
   position: relative;
@@ -66,10 +72,11 @@ p {
   font-size: 1.5rem;
 }
 
-.heading{
-
+.date{
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  background-color: rgba(252, 252, 252, 0.2);
+  color: white;
 }
-
 
 .colored-section{
   background-color: #a6e3e9;

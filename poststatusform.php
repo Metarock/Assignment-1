@@ -61,7 +61,7 @@
       </div>
 
       <div class="form-group">
-        <label for="">Date: </label><input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" /><br>
+        <label for="">Date: </label><input class="date" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" /><br>
       </div>
 
       <label for="">Permission Type: </label>
