@@ -12,14 +12,25 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="container-fluid">
           <div class="navbar-nav">
-            <a class="nav-link" href="./index.html">Home</a>
-            <a class="nav-link" href="./about.html">About</a>
-            <a class="nav-link" href="./poststatusform.php">Post a Status</a>
-            <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./poststatusform.php">Post a Status</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </nav>
+
 
     <h1 class = "text-center text-uppercase">Status Processing </h1>
     <?php
@@ -138,7 +149,14 @@
       if(mysqli_num_rows($result) != 0){
         while($row = mysqli_fetch_assoc($result)){
           if($row['code'] == $statusCode){
-            die("<p>The status code already exists!! Please input another code.</p>");
+            echo "<div class = 'container py-5'>";
+            echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
+            echo "<h6>Status Code ERROR</h6>";
+            echo "<div class = 'alert alert-danger' role='alert'>";
+            echo "<strong>Invalid</strong>";
+            echo "Status Code: ", $statusCode, " already exists!!";
+            echo "</div></div>";
+            die();
           }
         }
       }

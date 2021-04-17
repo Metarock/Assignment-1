@@ -12,14 +12,25 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="container-fluid">
           <div class="navbar-nav">
-            <a class="nav-link" href="./index.html">Home</a>
-            <a class="nav-link" href="./about.html">About</a>
-            <a class="nav-link" href="./poststatusform.php">Post a Status</a>
-            <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./poststatusform.php">Post a Status</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./searchstatusform.html">Search Status</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </nav>
+
     <?php
       require_once('conf/sqlinfo.inc.php');
 
