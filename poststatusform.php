@@ -47,17 +47,17 @@
       <label class="" for="">Share: </label>
       <div class="form-check form-check-inline">
           <input type="radio" class="form-check-input" name="share" value="public">
-          <label for="public" class="form-check-label">Public</label>
+          <label for="public" class="form-check-label clear">Public</label>
       </div>
 
       <div class="form-check form-check-inline">
         <input type="radio"class="form-check-input" name="share" value="friends">
-        <label for="friends" class="form-check-label">Friends</label>
+        <label for="friends" class="form-check-label clear">Friends</label>
       </div>
 
       <div class="form-check form-check-inline">
         <input type="radio" class="form-check-input"name="share" value="self">
-        <label for="self"class="form-check-label">Only Me</label> <br>
+        <label for="self"class="form-check-label clear">Only Me</label> <br>
       </div>
 
       <div class="form-group">
@@ -67,15 +67,15 @@
       <label for="">Permission Type: </label>
       <div class="form-check form-check-inline">
         <input class="form-check-input"type ="checkbox" name="permission[]" value="like"/>
-        <label class="form-check-label">Allow like</label>
+        <label class="form-check-label clear">Allow like</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type ="checkbox" name="permission[]" value="comment"/>
-        <label class="form-check-label">Allow comment</label>
+        <label class="form-check-label clear">Allow comment</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type ="checkbox" name="permission[]" value="share"/>
-        <label class="form-check-label">Allow share</label> <br>
+        <label class="form-check-label clear">Allow share</label> <br>
       </div>
 
       <div class="form-group">
