@@ -201,8 +201,6 @@
       //insert table
       $insert = insertTable($conn, $table, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
 
-      echo $insert;
-
       $result = mysqli_query($conn, $insert);
 
       if(!$result){
