@@ -95,7 +95,9 @@
       $exists = mysqli_query($conn, $tableExist);
 
       if($exists){
-        echo "<p>Table exists</p>";
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Connected</h4>";
+        echo "</div>";
       }
       else{
         echo "<p>Table does not exists. Creating one</p>";
@@ -103,7 +105,7 @@
         createTable($conn, $table);
       }
 
-
+      //if user does not input 4 digit numbers then print an error message
       if(!preg_match('/^S\d{4}$/', $statusCode)){
         //do something here\
         echo "<div class = 'container py-5'>";
@@ -115,7 +117,7 @@
         echo "</div></div>";
         die();
 
-      }
+      } //if user inputs symbols and other special characters print an error message
       else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
 
         echo "<div class = 'container py-5'>";
@@ -215,7 +217,7 @@
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>SUCCESS</h4>";
         echo "<h6>Inserting table success!</h6>";
-        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "</div>";
       }
 
     } 
