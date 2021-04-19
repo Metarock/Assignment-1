@@ -95,14 +95,7 @@
       $exists = mysqli_query($conn, $tableExist);
 
       if($exists){
-        echo "<div class = 'container py-5'>";
-        echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
-        echo "<h6>Creating Table Invalid!!!!</h6>";
-        echo "<div class = 'alert alert-danger' role='alert'>";
-        echo "<strong>Table Invite</strong>";
-        echo " The status code is not according to format, please follow the example (S1234)";
-        echo "</div></div>";
-        die();
+        echo "<p>Table exists</p>";
       }
       else{
         echo "<p>Table does not exists. Creating one</p>";
@@ -154,6 +147,7 @@
 
       //if there are no data in the table, code can ignore this.
       if(mysqli_num_rows($result) != 0){
+        //this is to validate the status code exists 
         while($row = mysqli_fetch_assoc($result)){
           if($row['code'] == $statusCode){
             echo "<div class = 'container py-5'>";
@@ -210,18 +204,21 @@
       $result = mysqli_query($conn, $insert);
 
       if(!$result){
-        echo "<p>Oops something went wrong</p>";
+        echo "<div class = 'container py-5'>";
+        echo "<h6>ERROR</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
+        echo "<strong>Invalid</strong>";
+        echo "Inserting failed!!";
+        echo "</div></div>";
         //If status code exists
-      } else{
-        echo "<p>Successfully posted and stored into $table database</p>";
+      } else{ //if connection is successful
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>SUCCESS</h4>";
+        echo "<h6>Inserting table success!</h6>";
+        echo "<div class = 'alert alert-danger' role='alert'>";
       }
 
-    } //if connection is successful
-
-
-
-
-
+    } 
     ?>
 
   </body>
