@@ -119,13 +119,12 @@
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`./poststatusform.php`">';
+        echo '<input class ="form-button" type="button" name="" value="Post Status" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
-        echo '<form action="index.html>"'
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-        echo "</div></div>";
-        echo '</form>';
+        echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+        echo '</div></div>';
         die();
 
       } //if user inputs symbols and other special characters print an error message
@@ -140,13 +139,12 @@
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`./poststatusform.php`">';
+        echo '<input class ="form-button" type="button" name="" value="Post Status" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
-        echo '<form action="index.html>"'
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-        echo "</div></div>";
-        echo '</form>';
+        echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+        echo '</div></div>';
         die();
       }
       else if(empty($share) || empty($date)){
@@ -161,13 +159,12 @@
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`./poststatusform.php`">';
+        echo '<input class ="form-button" type="button" name="" value="Post Status" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
-        echo '<form action="index.html>"'
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-        echo "</div></div>";
-        echo '</form>';
+        echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+        echo '</div></div>';
         die();
       }
 
@@ -190,13 +187,12 @@
             echo "</div></div>";
             echo "<div class='form-row d-flex justify-content-center text-center'>";
             echo '<div class="form-group col-md-2">';
-            echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`./poststatusform.php`">';
+            echo '<input class ="form-button" type="button" name="" value="Post Status" onClick="location.href=`poststatusform.php`">';
             echo "</div></div>";
-            echo '<form action="index.html>"'
+            echo "<div class='form-row d-flex justify-content-center text-center'>";
             echo '<div class="form-group col-md-2">';
-            echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-            echo "</div></div>";
-            echo '</form>';
+            echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+            echo '</div></div>';
             die();
           }
         }
@@ -252,11 +248,10 @@
         echo '<div class="form-group col-md-2">';
         echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
-        echo '<form action="index.html>"'
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-        echo "</div></div>";
-        echo '</form>';
+        echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+        echo '</div></div>';
         //If status code exists
       } else{ //if connection is successful
         echo "<div class = 'container py-5'>";
@@ -265,14 +260,12 @@
         echo "</div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Post status" onClick="location.href=`poststatusform.php`">';
+        echo '<input class ="form-button" type="button" name="" value="Create a new post" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
-        echo '<form action="index.html>"'
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="submit" name="" value="Back Home"';
-        echo "</div></div>";
-        echo '</form>';
+        echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
+        echo '</div></div>';
       }
 
     } 
