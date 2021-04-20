@@ -61,16 +61,33 @@
           echo "<p>Failed to read the table, something is wrong with ", $query,"</p>";
         } else {
           while($row = mysqli_fetch_assoc($result)){
-            echo'<div class="container">';
-            echo'<h2>Status Code: ', $row["code"], '</h2>';
-            echo '<div class="content">';
-            echo'<p>Status: ', $row["status"], '</p>';
-            echo'<p>Share: ', $row["share"], '</p>';
-            echo'<p>Date: ', date('F jS \, Y', strtotime( $row["date"])), '</p>';
-            echo'<p>Like: ', $row["likeBoolean"] ? "Allowed" : "Not Allowed", '</p>';
-            echo'<p>Comment: ', $row["shareBoolean"]? "Allowed" : "Not Allowed", '</p>';
-            echo'<p>Share: ', $row["commentBoolean"]? "Allowed" : "Not Allowed", '</p>';
-            echo'</div></div>';
+
+            if($statusText != $row["status"])
+            {
+              echo "<div class = 'container py-5'>";
+              echo "<h6>ERROR</h6>";
+              echo "<div class = 'alert alert-danger' role='alert'>";
+              echo "<strong>Status Text</strong>";
+              echo "Unable to find text OR does not exist!";
+              echo "</div></div>";
+              echo "<div class='form-row d-flex justify-content-center text-center'>";
+              echo '<div class="form-group col-md-2">';
+              echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+              echo "</div></div>";
+              die();
+            }
+            else{
+              echo'<div class="container">';
+              echo'<h2>Status Code: ', $row["code"], '</h2>';
+              echo '<div class="content">';
+              echo'<p>Status: ', $row["status"], '</p>';
+              echo'<p>Share: ', $row["share"], '</p>';
+              echo'<p>Date: ', date('F jS \, Y', strtotime( $row["date"])), '</p>';
+              echo'<p>Like: ', $row["likeBoolean"] ? "Allowed" : "Not Allowed", '</p>';
+              echo'<p>Comment: ', $row["shareBoolean"]? "Allowed" : "Not Allowed", '</p>';
+              echo'<p>Share: ', $row["commentBoolean"]? "Allowed" : "Not Allowed", '</p>';
+              echo'</div></div>';
+            }
           }
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
