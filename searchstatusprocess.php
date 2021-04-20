@@ -93,10 +93,9 @@
           }
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
-          echo '<input class ="form-button" type="button" name="" value="Search" onClick="location.href=`searchstatusform.html`">';
-          // echo '<div class="form-group col-md-2">';
-          // echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+          echo '<input class ="form-button" type="button" name="" value="New Search" onClick="location.href=`searchstatusform.html`">';
           echo "/div></div>";
+          echo '<a class=""href="./index.html">Return to Home Page</a>';
           //Free up memory, after using the result pointer
           mysqli_free_result($result);
         }
