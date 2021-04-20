@@ -72,6 +72,10 @@
             echo'<p>Share: ', $row["commentBoolean"]? "Allowed" : "Not Allowed", '</p>';
             echo'</div></div>';
           }
+          echo "<div class='form-row d-flex justify-content-center text-center'>";
+          echo '<div class="form-group col-md-2">';
+          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
+          echo "</div></div>";
         }
       }
 

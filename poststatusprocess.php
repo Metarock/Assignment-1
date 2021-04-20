@@ -117,6 +117,10 @@
         echo "<strong>Invalid</strong>";
         echo " The status code is not according to format, please follow the example (S1234)";
         echo "</div></div>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo "</div></div>";
         die();
 
       } //if user inputs symbols and other special characters print an error message
@@ -129,6 +133,10 @@
         echo "<strong>Invalid</strong>";
         echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
         echo "</div></div>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo "</div></div>";
         die();
       }
       else if(empty($share) || empty($date)){
@@ -140,6 +148,10 @@
         echo "<div class = 'alert alert-danger' role='alert'>";
         echo "<strong>Invalid</strong>";
         echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo "</div></div>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
         echo "</div></div>";
         die();
       }
@@ -160,6 +172,10 @@
             echo "<div class = 'alert alert-danger' role='alert'>";
             echo "<strong>Invalid</strong>";
             echo "Status Code: ", $statusCode, " already exists!!";
+            echo "</div></div>";
+            echo "<div class='form-row d-flex justify-content-center text-center'>";
+            echo '<div class="form-group col-md-2">';
+            echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
             echo "</div></div>";
             die();
           }
@@ -212,12 +228,20 @@
         echo "<strong>Invalid</strong>";
         echo "Inserting failed!!";
         echo "</div></div>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo "</div></div>";
         //If status code exists
       } else{ //if connection is successful
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>SUCCESS</h4>";
         echo "<h6>Inserting table success!</h6>";
         echo "</div>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo "</div></div>";
       }
 
     } 
