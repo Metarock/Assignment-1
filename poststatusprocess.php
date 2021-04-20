@@ -106,6 +106,8 @@
       }
 
       //if user does not input 4 digit numbers then print an error message
+      //TO DO: 
+      // TO add a back butto upon displayin an error message
       if(!preg_match('/^S\d{4}$/', $statusCode)){
         //do something here\
         echo "<div class = 'container py-5'>";
