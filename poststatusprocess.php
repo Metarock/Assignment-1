@@ -120,7 +120,9 @@
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
         echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-        echo "</div></div>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+        echo "</div></div></div>";
         die();
 
       } //if user inputs symbols and other special characters print an error message
@@ -136,7 +138,9 @@
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
         echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-        echo "</div></div>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+        echo "</div></div></div>";
         die();
       }
       else if(empty($share) || empty($date)){
@@ -152,7 +156,9 @@
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
         echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-        echo "</div></div>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+        echo "</div></div></div>";
         die();
       }
 
@@ -176,7 +182,9 @@
             echo "<div class='form-row d-flex justify-content-center text-center'>";
             echo '<div class="form-group col-md-2">';
             echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-            echo "</div></div>";
+            echo '<div class="form-group col-md-2">';
+            echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+            echo "</div></div></div>";
             die();
           }
         }
@@ -230,8 +238,10 @@
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-        echo "</div></div>";
+        echo '<input class ="form-button" type="button" name="" value="Back to status" onClick="location.href=`poststatusform.php`">';
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+        echo "</div></div></div>";
         //If status code exists
       } else{ //if connection is successful
         echo "<div class = 'container py-5'>";

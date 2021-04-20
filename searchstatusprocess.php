@@ -78,7 +78,7 @@
           echo '<div class="form-group col-md-2">';
           echo '<input class ="form-button" type="button" name="" value="Search status" onClick="location.href=`searchstatusform.html`">';
           echo '<div class="form-group col-md-2">';
-          echo '<input class ="form-button" type="button" name="" value="Back to home" onClick="location.href=`index.html`">';
+          echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
           echo "</div></div></div>";
         } else {
           while($row = mysqli_fetch_assoc($result)){
@@ -95,8 +95,10 @@
           }
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
-          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
-          echo "</div></div>";
+          echo '<input class ="form-button" type="button" name="" value="Search" onClick="location.href=`searchstatusform.html`">';
+          echo '<div class="form-group col-md-2">';
+          echo '<input class ="form-button" type="button" name="" value="Home" onClick="location.href=`index.html`">';
+          echo "</div></div></div>";
           //Free up memory, after using the result pointer
           mysqli_free_result($result);
         }
