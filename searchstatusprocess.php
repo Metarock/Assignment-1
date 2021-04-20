@@ -42,6 +42,21 @@
         return $statusFind;
       }
 
+      function createTable($table){
+        $createTable = "CREATE TABLE $table(
+          code VARCHAR(5),
+          status VARCHAR(500) NOT NULL,
+          share VARCHAR(50) NOT NULL,
+          date DATE NOT NULL,
+          likeBoolean tinyint(1) NOT NULL,
+          commentBoolean tinyint(1) NOT NULL,
+          shareBoolean tinyint(1) NOT NULL,
+          PRIMARY KEY (code)
+        ) ";
+  
+        return $createTable;
+      }
+
       if(!$conn){
         echo "<h1>Connection to SQL has failed</h1>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
@@ -74,6 +89,30 @@
         $query = findStatus($table, $statusText);
 
         $result = mysqli_query($conn, $query);
+
+        if(empty($result)){ //if table does not exist, create a new one
+          echo "<div class = 'container py-5'>";
+          echo "<h4 class = 'text-center text-uppercase'>Table does not exists. Creating one</h4>";
+          echo "</div>";
+  
+          $createTable = createTable($table);
+  
+          $result = mysqli_query($conn, $createTable);
+
+          echo "<div class = 'container py-5'>";
+          echo "<h4 class = 'text-center text-uppercase'>Table CREATED!! Please post a status at this link</h4>";
+          echo "</div>";
+          echo "<div class='form-row d-flex justify-content-center text-center'>";
+          echo '<div class="form-group col-md-2">';
+          echo '<input class ="form-button" type="button" name="" value="Post Status" onClick="location.href=`poststatusform.php`">';
+          echo "</div></div>";
+          die();
+        }
+        else{ //if data succeeds, proceed forward
+          echo "<div class = 'container py-5'>";
+          echo "<h4 class = 'text-center text-uppercase'>Connected</h4>";
+          echo "</div>";
+        }
 
         //if status does not exists
         if(!$result || $result->num_rows == 0){
