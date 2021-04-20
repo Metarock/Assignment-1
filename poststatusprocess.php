@@ -240,10 +240,14 @@
         echo "</div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
-        echo "</div></div>";
+        echo '<input class ="form-button" type="button" name="" value="Create a new post" onClick="location.href=`poststatusform.php`">';
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back to home" onClick="location.href=`index.html`">';
+        echo "</div></div></div>";
       }
 
+      //close database
+      mysqli_close($result)
     } 
     ?>
   </body>
