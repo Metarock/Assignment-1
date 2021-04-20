@@ -114,7 +114,7 @@
         echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
         echo "<h6>Status Code Invalid</h6>";
         echo "<div class = 'alert alert-danger' role='alert'>";
-        echo "<strong>Invalid</strong>";
+        echo "<strong>Invalid Code</strong>";
         echo " The status code is not according to format, please follow the example (S1234)";
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
@@ -135,7 +135,7 @@
         echo "<h6>Status Text is invalid</h6>";
         echo "<div class = 'alert alert-danger' role='alert'>";
         echo "<strong>Invalid</strong>";
-        echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo " The inputs are empty and needs to be occupied OR it's not valid. Please ensure they are filled AND valid.";
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
@@ -154,8 +154,8 @@
         echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
         echo "<h6>Share or Date is not occupied</h6>";
         echo "<div class = 'alert alert-danger' role='alert'>";
-        echo "<strong>Invalid</strong>";
-        echo " The inputs are empty and needs to be occupied. Please ensure they are filled.";
+        echo "<strong>Invalid share or date</strong>";
+        echo " The inputs are empty and needs to be occupied. Please ensure they are selected.";
         echo "</div></div>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
