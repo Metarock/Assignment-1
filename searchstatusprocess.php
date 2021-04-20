@@ -41,24 +41,43 @@
 
         return $status;
       }
-      $statusText = $_GET['statustext'];
 
       if(!$conn){
         echo "<h1>Connection to SQL has failed</h1>";
+        echo "<div class='form-row d-flex justify-content-center text-center'>";
+        echo '<div class="form-group col-md-2">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo "</div></div>";
         die();
       }else{
 
         //check if table exists
-        if(!preg_match('/^[\w.,!?]+$/', $statusText) && is_null($statusText)){
+        if(!preg_match('/^[\w.,!?]+$/', $_GET['statustext']) && is_null( $_GET['statustext'])){
           die("<p>The status you are searching for is invalid</p>");
+          echo "<div class='form-row d-flex justify-content-center text-center'>";
+          echo '<div class="form-group col-md-2">';
+          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+          echo "</div></div>";
+        }
+        else{
+          $statusText = $_GET['statustext'];
         }
 
         $query = findStatus($conn, $table, $statusText);
 
         $result = mysqli_query($conn, $query);
 
-        if(!$result){
-          echo "<p>Failed to read the table, something is wrong with ", $query,"</p>";
+        if(!$result || $result->num_rows == 0){
+          echo "<div class = 'container py-5'>";
+          echo "<h6>FAILED TO READ TABLE</h6>";
+          echo "<div class = 'alert alert-danger' role='alert'>";
+          echo "<strong>Status Text: ", $query, "</strong>";
+          echo "Unable to find text OR does not exist! Please try again.";
+          echo "</div></div>";
+          echo "<div class='form-row d-flex justify-content-center text-center'>";
+          echo '<div class="form-group col-md-2">';
+          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+          echo "</div></div>";
         } else {
           while($row = mysqli_fetch_assoc($result)){
 
@@ -74,20 +93,18 @@
               echo '<div class="form-group col-md-2">';
               echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
               echo "</div></div>";
-              die();
             }
-            else{
-              echo'<div class="container">';
-              echo'<h2>Status Code: ', $row["code"], '</h2>';
-              echo '<div class="content">';
-              echo'<p>Status: ', $row["status"], '</p>';
-              echo'<p>Share: ', $row["share"], '</p>';
-              echo'<p>Date: ', date('F jS \, Y', strtotime( $row["date"])), '</p>';
-              echo'<p>Like: ', $row["likeBoolean"] ? "Allowed" : "Not Allowed", '</p>';
-              echo'<p>Comment: ', $row["shareBoolean"]? "Allowed" : "Not Allowed", '</p>';
-              echo'<p>Share: ', $row["commentBoolean"]? "Allowed" : "Not Allowed", '</p>';
-              echo'</div></div>';
-            }
+            else
+            echo'<div class="container">';
+            echo'<h2>Status Code: ', $row["code"], '</h2>';
+            echo '<div class="content">';
+            echo'<p>Status: ', $row["status"], '</p>';
+            echo'<p>Share: ', $row["share"], '</p>';
+            echo'<p>Date: ', date('F jS \, Y', strtotime( $row["date"])), '</p>';
+            echo'<p>Like: ', $row["likeBoolean"] ? "Allowed" : "Not Allowed", '</p>';
+            echo'<p>Comment: ', $row["shareBoolean"]? "Allowed" : "Not Allowed", '</p>';
+            echo'<p>Share: ', $row["commentBoolean"]? "Allowed" : "Not Allowed", '</p>';
+            echo'</div></div>';
           }
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
