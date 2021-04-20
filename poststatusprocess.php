@@ -42,18 +42,19 @@
 
 
     //Create the table of into the server IF IT DOES NOT EXIST YET
-    function createTable($conn, $table){
-      $createTable = "CREATE TABLE IF NOT EXISTS $table(
-        code VARCHAR(5) PRIMARY KEY,
+    function createTable($table){
+      $createTable = "CREATE TABLE $table(
+        code VARCHAR(5),
         status VARCHAR(500) NOT NULL,
         share VARCHAR(50) NOT NULL,
         date DATE NOT NULL,
         likeBoolean tinyint(1) NOT NULL,
         commentBoolean tinyint(1) NOT NULL,
-        shareBoolean tinyint(1) NOT NULL
-
+        shareBoolean tinyint(1) NOT NULL,
+        PRIMARY KEY (code)
       ) ";
 
+      return $createTable;
     }
 
     function insertTable($table,$statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
@@ -89,20 +90,26 @@
       $date = $_POST['date'];
       $permission = $_POST['permission'];
 
-      //validate the input and upon error provide links to return to the Home page and Post Status
+      //validate table exists
       $tableExist = tableExists($table);
 
-      $exists = mysqli_query($conn, $tableExist);
 
-      if($exists){
+      
+      $result = mysqli_query($conn, $tableExist);
+
+      if(empty($result)){ //if table does not exist, create a new one
+        echo "<div class = 'container py-5'>";
+        echo "<h4 class = 'text-center text-uppercase'>Table does not exists. Creating one</h4>";
+        echo "</div>";
+
+        $createTable = createTable($table);
+
+        $result = mysqli_query($conn, $createTable);
+      }
+      else{ //if data succeeds, proceed forward
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>Connected</h4>";
         echo "</div>";
-      }
-      else{
-        echo "<p>Table does not exists. Creating one</p>";
-
-        createTable($conn, $table);
       }
 
       //if user does not input 4 digit numbers then print an error message
