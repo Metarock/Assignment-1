@@ -46,7 +46,7 @@
         echo "<h1>Connection to SQL has failed</h1>";
         echo "<div class='form-row d-flex justify-content-center text-center'>";
         echo '<div class="form-group col-md-2">';
-        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+        echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
         echo "</div></div>";
         die();
       }else{
@@ -56,7 +56,7 @@
           die("<p>The status you are searching for is invalid</p>");
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
-          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
           echo "</div></div>";
         }
         else{
@@ -76,7 +76,7 @@
           echo "</div></div>";
           echo "<div class='form-row d-flex justify-content-center text-center'>";
           echo '<div class="form-group col-md-2">';
-          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+          echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
           echo "</div></div>";
         } else {
           while($row = mysqli_fetch_assoc($result)){
@@ -91,7 +91,7 @@
               echo "</div></div>";
               echo "<div class='form-row d-flex justify-content-center text-center'>";
               echo '<div class="form-group col-md-2">';
-              echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`poststatusform.php`">';
+              echo '<input class ="form-button" type="button" name="" value="Back" onClick="location.href=`searchstatusform.html`">';
               echo "</div></div>";
             }
             else
