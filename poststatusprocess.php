@@ -56,7 +56,7 @@
 
     }
 
-    function insertTable($conn, $table,$statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
+    function insertTable($table,$statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable){
       $insert = "INSERT INTO $table"
                 . "(code, status, share, date, likeBoolean, commentBoolean, shareBoolean)"
                 . "VALUES"
@@ -64,13 +64,13 @@
       return $insert;
     }
 
-    function codeExists($conn, $table){
+    function codeExists($table){
       $code = "SELECT code FROM $table";
 
       return $code;
     }
 
-    function tableExists($conn, $table){
+    function tableExists($table){
       $checkTable = "SELECT * FROM $table";
 
       return $checkTable;
@@ -90,7 +90,7 @@
       $permission = $_POST['permission'];
 
       //validate the input and upon error provide links to return to the Home page and Post Status
-      $tableExist = tableExists($conn, $table);
+      $tableExist = tableExists($table);
 
       $exists = mysqli_query($conn, $tableExist);
 
@@ -168,7 +168,7 @@
         die();
       }
 
-      $codeQuery = codeExists($conn, $table);
+      $codeQuery = codeExists($table);
 
 
       $result = mysqli_query($conn, $codeQuery);
@@ -233,7 +233,7 @@
       $date = date('Y-m-d', strtotime(str_replace('/', '-', $date)));
 
       //insert table
-      $insert = insertTable($conn, $table, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
+      $insert = insertTable($table, $statusCode, $statusText, $share, $date, $likeable, $commentable, $shareable);
 
       $result = mysqli_query($conn, $insert);
 

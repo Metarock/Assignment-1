@@ -36,10 +36,10 @@
 
       $conn = mysqli_connect($host, $user, $password, $db);
 
-      function findStatus($conn, $table, $statusText){
-        $status = "SELECT * FROM $table WHERE status LIKE '%$statusText%'";
+      function findStatus($table, $statusText){
+        $statusFind = "SELECT * FROM $table WHERE status LIKE '%$statusText%'";
 
-        return $status;
+        return $statusFind;
       }
 
       if(!$conn){
@@ -71,7 +71,7 @@
           $statusText = $_GET['statustext'];
         }
 
-        $query = findStatus($conn, $table, $statusText);
+        $query = findStatus($table, $statusText);
 
         $result = mysqli_query($conn, $query);
 
