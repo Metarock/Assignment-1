@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
           <label for="">Status</label>
-          <input class="form-input" type="text" name="statustext" value="" required/><br>
+          <input class="form-input" type="text" name="statustext" value="" required/>
         </div>
       </div>
 
