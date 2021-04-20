@@ -32,7 +32,11 @@
     </nav>
     <h1 class="heading">Status Posting System</h1>
 
+    <!-- Used bootstrap framework to style the website's interface  -->
+    <!-- Implement a form html element, so that we may extract users input -->
     <form class="" action="./poststatusprocess.php" method="post">
+      <!-- To center our content in the screen and justify it. So any contents within this div element 
+      will be centered and justified -->
       <div class="form form-row d-flex justify-content-center text-center">
         <div class="form-group">
           <label for="">Status Code</label>
@@ -61,6 +65,7 @@
       </div>
 
       <div class="form-group">
+      <!-- used a php function here to format our date -->
         <label for="">Date: </label><input class="clear" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" /><br>
       </div>
 

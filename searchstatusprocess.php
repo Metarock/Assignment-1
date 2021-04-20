@@ -55,7 +55,7 @@
         die();
       }else{
 
-        //check if table exists
+        //Validate that the input is according to format and it's not null
         if(!preg_match('/^[\w.,!?]+$/', $_GET['statustext']) && is_null( $_GET['statustext'])){
           die("<p>The status you are searching for is invalid</p>");
           echo "<div class='form-row d-flex justify-content-center text-center'>";
@@ -67,14 +67,15 @@
           echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
           echo '</div></div>';
         }
-        else{
-          $statusText = $_GET['statustext'];
-        }
+        //if input is valid, set the input according to user inputted. 
+        $statusText = $_GET['statustext'];
+        
 
         $query = findStatus($table, $statusText);
 
         $result = mysqli_query($conn, $query);
 
+        //if status does not exists
         if(!$result || $result->num_rows == 0){
           echo "<div class = 'container py-5'>";
           echo "<h6>FAILED TO READ TABLE</h6>";
@@ -91,6 +92,7 @@
           echo '<input class ="form-button" type="button" name="" value="Back Home" onClick="location.href=`index.html`">';
           echo '</div></div>';
         } else {
+          //if status exists, proceed to print out the content.
           while($row = mysqli_fetch_assoc($result)){
             echo'<div class="container">';
             echo'<h2>Status Code: ', $row["code"], '</h2>';

@@ -8,6 +8,7 @@
     <title></title>
   </head>
   <body>
+  <!-- Used navbar for easier navigation for users -->
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="container-fluid">
@@ -35,11 +36,9 @@
     <h1 class = "text-center text-uppercase">Status Processing </h1>
     <?php
     require_once('conf/sqlinfo.inc.php');
-
-    //// TODO:
-    // 1. Status (done), Status text (done), share (done)
     $conn = mysqli_connect($host, $user, $password, $db);
 
+    //--------------------------FUNCTIONS----------------------------------------//
 
     //Create the table of into the server IF IT DOES NOT EXIST YET
     function createTable($table){
@@ -77,12 +76,14 @@
       return $checkTable;
     }
 
+    //------------------------------------------------------------------//
+
+    //Check if connection is working 
     if(!$conn){
       echo "<p>Connection failed</p>";
       die();
 
     }else{
-      // echo "<p>Connection successful</p>";
       //get data from the form and check it is printing out
       $statusCode = $_POST['statuscode'];
       $statusText = $_POST['statustext'];
@@ -112,11 +113,8 @@
         echo "</div>";
       }
 
-      //if user does not input 4 digit numbers then print an error message
-      //TO DO: 
-      // TO add a back butto upon displayin an error message
+      //if user does not input a letter followed by 4 digit numbers then print an error message
       if(!preg_match('/^S\d{4}$/', $statusCode)){
-        //do something here\
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
         echo "<h6>Status Code Invalid</h6>";
@@ -155,8 +153,6 @@
         die();
       }
       else if(empty($share) || empty($date)){
-        // echo "<p>The inputs are empty and needs to occupied. Please ensure that they are filled.</p>";
-        // echo "<p> Please click go back on home page or post status page to input again</p>";
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
         echo "<h6>Share or Date is not occupied</h6>";
@@ -222,6 +218,8 @@
       if(empty($permission)){
         die("<p>Permissions are not set, please return and enter your input.</p>");
       }else{
+        //loop through the array of permissions and set their values to true
+        //if user has it selected
         foreach($permission as $value){
           if($value === "like"){
             $likeable = 1;
@@ -244,6 +242,7 @@
 
       $result = mysqli_query($conn, $insert);
 
+      //If return value of result is null or false
       if(!$result){
         echo "<div class = 'container py-5'>";
         echo "<h6>ERROR</h6>";
