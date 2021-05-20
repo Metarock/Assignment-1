@@ -133,7 +133,7 @@
         die();
 
       } //if user inputs symbols and other special characters print an error message
-      else if(!preg_match('/^[\w.,!?]+$/', $statusText)){
+      else if(!preg_match('/^[\w .,!?]+$/', $statusText)){
 
         echo "<div class = 'container py-5'>";
         echo "<h4 class = 'text-center text-uppercase'>Invalid Input</h4>";
@@ -207,7 +207,7 @@
       $testDate = explode('/', $date);
       $validDate = checkdate($testDate[0], $testDate[1], $testDate[2]);
 
-      if(!validDate){
+      if(!$validDate){
         die("<p>Invalid date, please input again</p>");
       }
 
@@ -275,8 +275,6 @@
       }
 
     } 
-    //close database
-    mysqli_close($result)
     ?>
   </body>
 </html>
